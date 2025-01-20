@@ -13,23 +13,23 @@
 
 ## Taler Docs Info:
 
-The template is a backend feature that is used to allow wallets to create an order. This is useful in cases where a store does not have Internet connectivity or where a Web site wants to enable payments on a purely static Web page (for example to collect donations). In these cases, the GNU Taler wallet can be used to setup an order (and then of course pay for it).
+The template is a backend feature that is used to allow wallets to create an order. This is useful in cases where a store does not have Internet connectivity or where a Web site wants to enable payments on a purely static Web page (for example to collect donations). In these cases, the GNU Taler wallet can be used to set up an order (and then of course pay for it).
 
-The template itself primarily provides order details that cannot be be changed by the customer when the wallet creates the order. The idea is that the user may be prompted to enter certain information, such as the amount to be paid, or the order summary (as a reminder to themselves or a message to the store), while the template provides all of the other contract details.
+The template itself primarily provides order details that cannot be changed by the customer when the wallet creates the order. The idea is that the user may be prompted to enter certain information, such as the amount to be paid, or the order summary (as a reminder to themselves or a message to the store), while the template provides all of the other contract details.
 
-The typical user-experience with templatates is that the user first scans a QR code or clicks on a taler://-URI which contains a pay-template (see LSD 0006). The URI specifies which values the user should supply, currently either nothing, the amount, the order summary or both. The URI may also specify defaults or partial defaults for those values. After the user has supplied those values, the wallet will use the public template API to create the order, then fetch the order details, and proceed as if it had been given the respective pay URI in the first place: show the full contract details and allow the user to make a payment. If the user chooses to aborts the payment, the wallet should give the user the opportunity to edit the values and create another order with different values. If the template does not include any values that the user is allowed to edit (so it is basically a fixed contract), the wallet should directly create the order and immediately proceed to the contract acceptance dialog.
+The typical user experience with templatates is that the user first scans a QR code or clicks on a taler://-URI which contains a pay-template (see LSD 0006). The URI specifies which values the user should supply, currently either nothing, the amount, the order summary, or both. The URI may also specify defaults or partial defaults for those values. After the user has supplied those values, the wallet will use the public template API to create the order, then fetch the order details, and proceed as if it had been given the respective pay URI in the first place: show the full contract details and allow the user to make a payment. If the user chooses to abort the payment, the wallet should give the user the opportunity to edit the values and create another order with different values. If the template does not include any values that the user is allowed to edit (so it is basically a fixed contract), the wallet should directly create the order and immediately proceed to the contract acceptance dialog.
 
-The business process for the templating API is also pretty simple. First, the private API is used to setup (or edit) the template, providing all of the contract terms that subsequently cannot be changed by the customer/wallet. This template data is then stored under the template ID which can be freely chosen. The SPA should also make it easy for the merchant to convert the template ID into a taler://-URI and/or QR code. Here, the merchant must additionally specify the defaults (if any) for the customer-editable values. Afterwards, the merchant can print out the QR code for display at the store, add a link to the taler://-URI and/or embed the respective QR-code image into their Web page.
+The business process for the templating API is also pretty simple. First, the private API is used to set up (or edit) the template, providing all of the contract terms that subsequently cannot be changed by the customer/wallet. This template data is then stored under the template ID which can be freely chosen. The SPA should also make it easy for the merchant to convert the template ID into a taler://-URI and/or QR code. Here, the merchant must additionally specify the defaults (if any) for the customer-editable values. Afterward, the merchant can print out the QR code for display at the store, add a link to the taler://-URI, and/or embed the respective QR-code image into their Web page.
 
-To receive a payment confirmation, the mechant may choose to configure a webhook in the merchant backend on the pay action, for example to send an SMS to their mobile phone. For points-of-sale without a mobile phone or Internet connectivity, the OTP mechanism can also be used to confirm payments.
+To receive a payment confirmation, the merchant may choose to configure a webhook in the merchant backend on the pay action, for example, to send an SMS to their mobile phone. For points-of-sale without a mobile phone or Internet connectivity, the OTP mechanism can also be used to confirm payments.
 
 ## Possibilities
 1. Add template
-2. See the URL in qr code
+2. See the URL in the QR code format
 3. Print it
 4. Put it in the store
 5. Customer can pay(modify the receipt optionally if allowed by merchant)
-6. Wait for merchant to see the payment, or sms, or to check the otp working?
+6. Wait for the merchant to see the payment, or sms, or to check if the OTP working.
 7. Delete the template
 
 ## Scenes
@@ -43,34 +43,34 @@ To receive a payment confirmation, the mechant may choose to configure a webhook
 2. Merchant (extended version)
 3. Buyer (extended version)
 
-# Script 
+# Script
 
-- Welcome everyone today we will show you the guide on the templates 
+- Welcome everyone today we will show you the guide on the templates
 - What are the templates?
 
-(Show some picture with the customer using the qr-code, to make the order)
+(Show some pictures of the customer using the QR code, to make the order)
 
-(Extended version make the video of customer comming to the shop scanning the qr code, making changes if necessary, 
- paying, merchant checks for the payment being through)
+(Extended version make the video of the customer coming to the shop scanning the QR code, making changes if necessary,
+paying, merchant checks for the payment being through)
 
 - How to add the template?
-  1. Show the Taler Backoffice main view
-  2. Open the page with the templates
-  3. Click the plus button
-  4. Form has opened 
-  5. Describe the options
-     6. On options of the Summary is editable and Amount is editable. 
-     7. Shows what user will be able to do as video of screen capture
-  6. Press save
+    1. Show the Taler Backoffice main view
+    2. Open the page with the templates
+    3. Click the plus button
+    4. Form has opened
+    5. Describe the options
+        6. On options the Summary is editable and Amount is editable.
+        7. Shows what the user will be able to do as video of screen capture
+    6. Press save
 
 How to view the template?
-  1. Tempalate page
-  2. Press QR button
-  3. Print?
+1. Template page
+2. Press the QR button
+3. Print?
 
 How to delete the template?
-  1. Template page
-  2. Delete button
+1. Template page
+2. Delete button
 
 # Bullshit generator© version
 reviewed
